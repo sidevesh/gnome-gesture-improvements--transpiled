@@ -5,8 +5,8 @@ This extension modifies and extends existing touchpad gestures on GNOME.
 This repository contains the seemingly unmaintaned extension's transpiled to JS version with some fixes to get it to work on GNOME 46,
 along with some additions which were previously raised as PR on the original project repo by me but never merged.
 
-Credit goes to @jaophi to for getting the transpiled version to work (https://github.com/harshadgavali/gnome-gesture-improvements/issues/206#issuecomment-1782750156)
-upgrade supported version in manifest.json by @7HE-W0R1D (https://github.com/harshadgavali/gnome-gesture-improvements/issues/206#issuecomment-2023405620)
+Credit goes to @jaophi to for getting the transpiled version to work (https://github.com/harshadgavali/gnome-gesture-improvements/issues/206#issuecomment-1782750156)  
+upgrade supported version in metadata.json by @7HE-W0R1D (https://github.com/harshadgavali/gnome-gesture-improvements/issues/206#issuecomment-2023405620)  
 and fix for No signal error by @Yanndroid (https://github.com/harshadgavali/gnome-gesture-improvements/issues/206#issuecomment-2026336600)
 
 There is still the issue of pinch gestures not working that needs to be fixed.
