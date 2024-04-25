@@ -6,16 +6,16 @@ This repository contains the seemingly unmaintaned extension's transpiled to JS 
 along with some additions which were previously raised as PR on the original project repo by me but never merged.
 
 Credit goes to @jaophi to for getting the transpiled version to work (https://github.com/harshadgavali/gnome-gesture-improvements/issues/206#issuecomment-1782750156)
-upgrade supported version in manifest by @7HE-W0R1D (https://github.com/harshadgavali/gnome-gesture-improvements/issues/206#issuecomment-2023405620)
+upgrade supported version in manifest.json by @7HE-W0R1D (https://github.com/harshadgavali/gnome-gesture-improvements/issues/206#issuecomment-2023405620)
 and fix for No signal error by @Yanndroid (https://github.com/harshadgavali/gnome-gesture-improvements/issues/206#issuecomment-2026336600)
 
 There is still the issue of pinch gestures not working that needs to be fixed.
 
 ## Installation
 ### Manually
-1. Install extension
+1. Download the latest extension version from https://github.com/sidevesh/gnome-gesture-improvements--transpiled/releases
+2. Install extension
 ```
-Download the latest extension version from https://github.com/sidevesh/gnome-gesture-improvements--transpiled/releases
 gnome-extensions install -f ~/Downloads/gestureImprovements@gestures.zip
 ```
 2. Log out and log in **or** just restart session (X11)
