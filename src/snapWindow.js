@@ -263,7 +263,7 @@ export var SnapWindowExtension = class SnapWindowExtension {
 		this._touchpadSwipeGesture = this._swipeTracker._touchpadGesture;
 		this._tilePreview = new TilePreview();
 		Main.layoutManager.uiGroup.add_child(this._tilePreview);
-		this._uiGroupAddedActorId = Main.layoutManager.uiGroup.connect('actor-added', () => {
+		this._uiGroupAddedActorId = Main.layoutManager.uiGroup.connect('child-added', () => {
 			Main.layoutManager.uiGroup.set_child_above_sibling(this._tilePreview, null);
 		});
 
