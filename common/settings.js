@@ -6,6 +6,7 @@ export var PinchGestureType;
 	PinchGestureType[PinchGestureType['SHOW_DESKTOP'] = 1] = 'SHOW_DESKTOP';
 	PinchGestureType[PinchGestureType['CLOSE_WINDOW'] = 2] = 'CLOSE_WINDOW';
 	PinchGestureType[PinchGestureType['CLOSE_DOCUMENT'] = 3] = 'CLOSE_DOCUMENT';
+	PinchGestureType[PinchGestureType['SHOW_NOTIFICATION_LIST'] = 4] = 'SHOW_NOTIFICATION_LIST';
 })(PinchGestureType || (PinchGestureType = {}));
 
 // define enum
