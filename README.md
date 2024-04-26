@@ -10,6 +10,7 @@ upgrade supported version in metadata.json by @7HE-W0R1D (https://github.com/har
 and fix for No signal error by @Yanndroid (https://github.com/harshadgavali/gnome-gesture-improvements/issues/206#issuecomment-2026336600)
 
 There is still the issue of pinch gestures not working that needs to be fixed.
+And also application gestures not working.
 
 ## Installation
 ### Manually
