@@ -15,7 +15,7 @@ And also application gestures not working.
 
 ## Installation
 ### Manually
-1. Download the latest extension version from https://github.com/sidevesh/gnome-gesture-improvements--transpiled/releases
+1. Download the latest extension version from https://github.com/sidevesh/gnome-gesture-improvements--transpiled/releases/latest
 2. Install extension
 ```
 gnome-extensions install -f ~/Downloads/gestureImprovements@gestures.zip
