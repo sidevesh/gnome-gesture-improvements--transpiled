@@ -99,12 +99,12 @@ const TilePreview = registerClass(class TilePreview extends St.Widget {
 						case GestureMaxUnMaxState.UNMAXIMIZE:
 							if (this._window.is_fullscreen())
 								this._window.unmake_fullscreen();
-							this._window.unmaximize(Meta.MaximizeFlags.BOTH);
+							this._window.unmaximize();
 							break;
 						case GestureMaxUnMaxState.MAXIMIZE:
 							if (this._window.is_fullscreen())
 								this._window.unmake_fullscreen();
-							this._window.maximize(Meta.MaximizeFlags.BOTH);
+							this._window.maximize();
 							break;
 						case GestureMaxUnMaxState.FULLSCREEN:
 							this._window.make_fullscreen();
@@ -227,7 +227,7 @@ const TilePreview = registerClass(class TilePreview extends St.Widget {
 
 	getNormalBox(window) {
 		const normalBox = window.get_frame_rect();
-		if (window.get_maximized() !== Meta.MaximizeFlags.BOTH)
+		if (!window.is_maximized())
 			return normalBox;
 		const [width, height] = [
 			Math.round(normalBox.width * 0.05),
@@ -306,7 +306,7 @@ export var SnapWindowExtension = class SnapWindowExtension {
 		const currentMonitor = window.get_monitor();
 		const monitorArea = global.display.get_monitor_geometry(currentMonitor);
 		const progress = window.is_fullscreen() ? GestureMaxUnMaxState.FULLSCREEN
-			: window.get_maximized() === Meta.MaximizeFlags.BOTH ? GestureMaxUnMaxState.MAXIMIZE : GestureMaxUnMaxState.UNMAXIMIZE;
+			: window.is_maximized() ? GestureMaxUnMaxState.MAXIMIZE : GestureMaxUnMaxState.UNMAXIMIZE;
 
 		this._toggledDirection = false;
 		this._allowChangeDirection = false;
