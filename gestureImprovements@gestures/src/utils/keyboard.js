@@ -10,7 +10,7 @@ class VirtualKeyboard {
 	}
 
 	sendKeys(keys) {
-		// log(`sending keys: ${keys}`);
+		// console.log(`sending keys: ${keys}`);
 		// keyEvents are stored in revere order so first event can be just popped
 		const keyEvents = [];
 		keys.forEach(key => keyEvents.push([key, Clutter.KeyState.RELEASED]));

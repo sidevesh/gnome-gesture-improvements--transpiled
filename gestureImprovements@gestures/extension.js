@@ -15,7 +15,7 @@ import { SnapWindowExtension } from './src/snapWindow.js'
 import * as DBusUtils from './src/utils/dbus.js'
 import * as VKeyboard from './src/utils/keyboard.js'
 import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
-export default class MyExtension extends Extension {
+export default class GestureImprovementsExtension extends Extension {
 	constructor(metadata) {
 		super(metadata);
 		this._settingChangedId = 0;
@@ -46,6 +46,7 @@ export default class MyExtension extends Extension {
 
 		this._disable();
 		DBusUtils.drop_proxy();
+		this.settings = null;
 	}
 
 	reload(_settings, key) {

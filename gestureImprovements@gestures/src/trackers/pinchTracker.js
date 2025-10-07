@@ -204,7 +204,7 @@ export var TouchpadPinchGesture = registerClass({
 		this._historyTracker.append(time, delta);
 		this._progress_scale = Math.clamp(new_progress, ...this._getBounds());
 
-		// log(JSON.stringify({ pinch_scale, new_progress, delta }));
+		// console.log(JSON.stringify({ pinch_scale, new_progress, delta }));
 		this.emit('update', this._progress_scale);
 	}
 

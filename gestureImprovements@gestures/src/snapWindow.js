@@ -189,10 +189,6 @@ const TilePreview = registerClass(class TilePreview extends St.Widget {
 		this.set_size(width, height);
 	}
 
-	_onDestroy() {
-		this._adjustment.run_dispose();
-	}
-
 	switchToSnapping(value) {
 		this._adjustment.remove_transition('value');
 		this._adjustment.value = value;
@@ -334,7 +330,7 @@ export var SnapWindowExtension = class SnapWindowExtension {
 	}
 
 	_gestureUpdate(_tracker, progress) {
-		// log(`progress: ${progress}, toggled: ${this._toggledDirection}`);
+		// console.log(`progress: ${progress}, toggled: ${this._toggledDirection}`);
 		if (this._toggledDirection) {
 			this._tilePreview.adjustment.value = progress;
 			return;

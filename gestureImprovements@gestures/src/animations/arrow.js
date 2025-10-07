@@ -7,7 +7,6 @@ import St from 'gi://St';
 import { registerClass } from '../../common/utils/gobject.js'
 import { easeActor } from '../utils/environment.js'
 import { WIGET_SHOWING_DURATION } from '../../constants.js'
-// const ExtMe = imports.misc.extensionUtils.getCurrentExtension();
 import * as Util from 'resource:///org/gnome/shell/misc/util.js';
 const Circle = registerClass(class GIE_Circle extends St.Widget {
 	_init(style_class) {

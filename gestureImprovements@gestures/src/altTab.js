@@ -62,10 +62,13 @@ export var AltTabGestureExtension = class AltTabGestureExtension {
 
 	destroy() {
 		this._extState = AltTabExtState.DISABLED;
+		if (this._altTabTimeoutId) {
+			GLib.source_remove(this._altTabTimeoutId);
+			this._altTabTimeoutId = 0;
+		}
 		this._connectHandlers.forEach(handle => this._touchpadSwipeTracker.disconnect(handle));
 		this._touchpadSwipeTracker.destroy();
 		this._connectHandlers = [];
-		this._adjustment.run_dispose();
 		if (this._switcher) {
 			this._switcher.destroy();
 			this._switcher = undefined;
@@ -90,6 +93,11 @@ export var AltTabGestureExtension = class AltTabGestureExtension {
 	_gestureBegin() {
 		this._progress = 0;
 		if (this._extState === AltTabExtState.DEFAULT) {
+			// Remove any existing timeout before creating
+			if (this._altTabTimeoutId) {
+				GLib.source_remove(this._altTabTimeoutId);
+				this._altTabTimeoutId = 0;
+			}
 			this._switcher = new WindowSwitcherPopup();
 			this._switcher._switcherList.add_style_class_name('gie-alttab-quick-transition');
 			this._switcher.connect('destroy', () => {

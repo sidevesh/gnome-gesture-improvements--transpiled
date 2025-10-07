@@ -7,7 +7,7 @@ import { registerClass } from '../../common/utils/gobject.js'
 import { printStack } from '../../common/utils/logging.js'
 import * as Util from 'resource:///org/gnome/shell/misc/util.js';
 const X11GestureDaemonXml = `<node>
-	<interface name="org.gestureImprovements.gestures">
+	<interface name="org.gnome.Shell.Extensions.GestureImprovements.Gestures">
 		<signal name="TouchpadSwipe">
 			<arg name="event" type="(siddu)"/>
 		</signal>
@@ -64,7 +64,7 @@ const DBusWrapperGIExtension = registerClass({
 		super._init();
 		this._proxyConnectSignalIds = [];
 		const ProxyClass = Gio.DBusProxy.makeProxyWrapper(X11GestureDaemonXml);
-		this._proxy = new ProxyClass(Gio.DBus.session, 'org.gestureImprovements.gestures', '/org/gestureImprovements/gestures');
+		this._proxy = new ProxyClass(Gio.DBus.session, 'org.gnome.Shell.Extensions.GestureImprovements.Gestures', '/org/gnome/Shell/Extensions/GestureImprovements/Gestures');
 		this._proxyConnectSignalIds.push(this._proxy.connectSignal('TouchpadSwipe', this._handleDbusSwipeSignal.bind(this)));
 		this._proxyConnectSignalIds.push(this._proxy.connectSignal('TouchpadHold', this._handleDbusHoldSignal.bind(this)));
 		this._proxyConnectSignalIds.push(this._proxy.connectSignal('TouchpadPinch', this._handleDbusPinchSignal.bind(this)));
@@ -73,7 +73,6 @@ const DBusWrapperGIExtension = registerClass({
 	dropProxy() {
 		if (this._proxy) {
 			this._proxyConnectSignalIds.forEach(id => this._proxy.disconnectSignal(id));
-			this._proxy.run_dispose();
 			this._proxy = undefined;
 		}
 	}
@@ -128,6 +127,8 @@ let connectedSignalIds = [];
 export function subscribe(callback) {
 	if (!proxy) {
 		printStack('starting dbus service \'gesture_improvements_gesture_daemon.service\' via spawn');
+		// Note: spawn is required here to manage the external gesture daemon service
+		// that provides low-level touchpad gesture events not available through GJS APIs
 		Util.spawn(['systemctl', '--user', 'start', 'gesture_improvements_gesture_daemon.service']);
 		connectedSignalIds = [];
 		proxy = new DBusWrapperGIExtension();
@@ -160,8 +161,9 @@ export function drop_proxy() {
 	if (proxy) {
 		unsubscribeAll();
 		proxy.dropProxy();
-		proxy.run_dispose();
 		proxy = undefined;
+		// Note: spawn is required here to stop the external gesture daemon service
+		// that was started earlier - proper cleanup of the background service
 		Util.spawn(['systemctl', '--user', 'stop', 'gesture_improvements_gesture_daemon.service']);
 	}
 }

@@ -104,7 +104,7 @@ export var OverviewRoundTripGestureExtension = class OverviewRoundTripGestureExt
 
 		this._progress = progress;
 
-		// log(`update: progress=${progress}, overview progress=${this._getOverviewProgressValue(progress)}`);
+		// console.log(`update: progress=${progress}, overview progress=${this._getOverviewProgressValue(progress)}`);
 		Main.overview._gestureUpdate(tracker, this._getOverviewProgressValue(progress));
 	}
 
@@ -126,7 +126,7 @@ export var OverviewRoundTripGestureExtension = class OverviewRoundTripGestureExt
 			endProgress = Math.clamp(endProgress, OverviewControlsState.HIDDEN, OverviewControlsState.APP_GRID);
 		}
 
-		// log(`end: progress=${this._progress}, endProgress=${endProgress}, overview progress=${this._getOverviewProgressValue(endProgress)}`)
+		// console.log(`end: progress=${this._progress}, endProgress=${endProgress}, overview progress=${this._getOverviewProgressValue(endProgress)}`)
 		Main.overview._gestureEnd(tracker, duration, endProgress);
 	}
 
