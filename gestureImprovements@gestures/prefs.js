@@ -1,6 +1,6 @@
 /* exported init, fillPreferencesWindow */
 
-import { buildPrefsWidget } from './common/prefs.js'
+import { buildPrefsWidget } from './prefs/prefs.js'
 import { ExtensionPreferences } from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
 
 export default class GestureImprovementsExtensionPreferences extends ExtensionPreferences {
