@@ -2,6 +2,8 @@
 
 This extension modifies and extends existing touchpad gestures on GNOME.
 
+## This is UNMAINTAINED now, https://github.com/HieuTNg/touchpad-gesture-customization by @HieuTNg is being properly maintained and has fixes to a bunch of bugs this is still stuck with, please consider moving to it
+
 This repository contains the seemingly unmaintaned extension's transpiled to JS version with some fixes to get it to work on GNOME 46,
 along with some additions which were previously raised as PR on the original project repo by me but never merged.
 
